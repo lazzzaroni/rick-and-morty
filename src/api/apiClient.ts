@@ -8,8 +8,8 @@ const apiClient = axios.create({
   },
 });
 
-const getAll = async () => {
-  const response = await apiClient.get<ApiData>(`/character`);
+const getAll = async (page = 1) => {
+  const response = await apiClient.get<ApiData>(`/character?page=${page}`);
   return response.data;
 };
 
@@ -18,6 +18,11 @@ const getByID = async (id: string) => {
   return response.data;
 };
 
-const ApiService = { getAll, getByID };
+const searchByName = async (name: string) => {
+  const response = await apiClient.get<Character>(`/character/?name=${name}`);
+  return response.data;
+};
+
+const ApiService = { getAll, getByID, searchByName };
 
 export default ApiService;

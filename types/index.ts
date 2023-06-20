@@ -1,6 +1,11 @@
 export type ApiData = {
-  info: object;
-  results: [];
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Character[];
 };
 
 export type Character = {

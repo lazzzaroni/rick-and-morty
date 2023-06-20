@@ -25,11 +25,7 @@ export default function Character() {
   );
 
   if (isSuccess) {
-    return (
-      <div className="container">
-        <CharacterCard data={character} />
-      </div>
-    );
+    return <CharacterCard data={character} />;
   }
 
   if (isLoading) {
@@ -55,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["getCharacter", id], async () => {
-    return await ApiService.findByID(id);
+    return await ApiService.getByID(id);
   });
 
   return {

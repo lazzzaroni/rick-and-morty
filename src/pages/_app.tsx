@@ -8,6 +8,7 @@ import {
   type DehydratedState,
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Layout from "@/components/layout";
 
 export default function MyApp({
   Component,
@@ -17,8 +18,10 @@ export default function MyApp({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <Layout>
+          <Component {...pageProps} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Layout>
       </Hydrate>
     </QueryClientProvider>
   );
