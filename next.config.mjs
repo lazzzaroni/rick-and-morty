@@ -18,6 +18,16 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "rickandmortyapi.com",
+        port: "",
+        pathname: "/api/character/**",
+      },
+    ],
+  },
 };
 
 export default config;

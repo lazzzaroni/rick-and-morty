@@ -1,6 +1,30 @@
+import ApiService from "@/api/apiClient";
+import AllCards from "@/components/AllCards";
 import Head from "next/head";
+import { useQuery } from "react-query";
+import { type ApiData } from "types";
 
 export default function Home() {
+  const { data, isLoading, isError, isSuccess } = useQuery<ApiData, Error>(
+    ["getCharacters"],
+    async () => {
+      return await ApiService.getAll();
+    }
+  );
+
+  const renderResult = () => {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+    if (isError) {
+      return <div>Something went wrong</div>;
+    }
+    if (isSuccess) {
+      return <AllCards cards={data.results} />;
+    }
+    return null;
+  };
+
   return (
     <>
       <Head>
@@ -10,7 +34,7 @@ export default function Home() {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <p>Hello</p>
+          {renderResult()}
         </div>
       </main>
     </>
