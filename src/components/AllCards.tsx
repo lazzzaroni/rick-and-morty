@@ -6,12 +6,8 @@ export default function AllCards({ data }: { data: ApiData }) {
   return (
     <>
       {data.results.map((character) => (
-        <Link
-          href={`/character/${character.id}`}
-          className=""
-          key={character.id}
-        >
-          <article className="flex flex-col items-center rounded-lg bg-slate-200 p-4 text-center shadow-black">
+        <Link href={`/character/${character.id}`} key={character.id}>
+          <article className="flex h-full items-center rounded-lg bg-slate-200 p-4 text-center shadow-lg shadow-gray-400/50 sm:flex-col">
             <Image
               src={character.image}
               alt={`${character.name} Image`}
@@ -19,9 +15,11 @@ export default function AllCards({ data }: { data: ApiData }) {
               width={100}
               className="rounded-lg"
             />
-            <p className="flex h-14 items-center justify-center text-center">
-              {character.name}
-            </p>
+            <div className="m-auto flex h-full content-center sm:m-0 sm:mt-4">
+              <p className="flex items-center justify-center text-center">
+                {character.name}
+              </p>
+            </div>
           </article>
         </Link>
       ))}

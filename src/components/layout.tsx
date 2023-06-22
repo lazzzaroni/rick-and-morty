@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <h1 className="container m-auto flex h-32 w-80 items-center justify-center text-center text-3xl sm:text-4xl">
         Rick and Morty Characters
       </h1>
-      <main className="flex min-h-[calc(100vh-8rem)] items-center justify-center">
+      <main className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center">
         {children}
       </main>
     </>
