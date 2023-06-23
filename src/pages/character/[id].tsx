@@ -2,7 +2,7 @@ import ApiService from "@/api/apiClient";
 import CharacterCard from "@/components/CharacterCard";
 import { type GetStaticPaths, type GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { QueryClient, dehydrate, useQuery } from "react-query";
+import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
 
 export default function Character() {
   const router = useRouter();
@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],

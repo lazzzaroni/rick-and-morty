@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { type ApiData } from "types";
 
 export default function Home() {
